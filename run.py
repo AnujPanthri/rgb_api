@@ -34,6 +34,13 @@ color_dict={
 app=flask.Flask(__name__)
 app.config["DEBUG"]=True
 #predicting from loaded trained_model
+
+
+@app.route('/')
+def home():
+    return "<h1>working</h1>"
+
+
 @app.route('/api',methods=['POST'])
 def predict_color():
     data=request.get_json(force=True)
