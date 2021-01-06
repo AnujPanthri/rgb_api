@@ -41,7 +41,7 @@ def home():
     return "<h1>working</h1>"
 
 
-@app.route('/api',methods=['POST'])
+@app.route('/api/',methods=['POST'])
 def predict_color():
     data=request.get_json(force=True)
     print(data)
