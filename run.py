@@ -55,3 +55,4 @@ def predict_color():
     color = color_dict[int(color_index)]
     result={'color':color}
     return jsonify(result)
+app.run()
