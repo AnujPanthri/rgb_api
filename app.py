@@ -32,7 +32,7 @@ color_dict={
     10 : 'White'
 }
 app=flask.Flask(__name__)
-app.config["DEBUG"]=True
+#app.config["DEBUG"]=True
 #predicting from loaded trained_model
 
 
@@ -55,4 +55,6 @@ def predict_color():
     color = color_dict[int(color_index)]
     result={'color':color}
     return jsonify(result)
-app.run()
+if __name__ == '__main__':
+    # Threaded option to enable multiple instances for multiple user access support
+    app.run(threaded=True, port=5000)
