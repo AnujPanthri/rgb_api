@@ -53,9 +53,13 @@ def predict_color():
     input_rgb=np.reshape(arr,[len(data),3]) #reshaping as per input to ANN model
     color_class_confidence = model.predict(input_rgb) # Output of layer is in terms of Confidence of the 11 classes
     
-    color_index = np.argmax(color_class_confidence, axis=1) #finding the color_class index from confidence
-    
-    return jsonify(color_index)
+    #color_index = np.argmax(color_class_confidence, axis=1) #finding the color_class index from confidence
+    #color = color_dict[int(color_index)]
+    #color=np.array(color)
+    #result=[]
+    #for i in range(len(color)):
+    #    result.append({'color':color[i,0]})
+    return jsonify(color_class_confidence)
 
 if __name__ == '__main__':
     # Threaded option to enable multiple instances for multiple user access support
