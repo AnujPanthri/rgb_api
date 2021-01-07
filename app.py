@@ -61,7 +61,7 @@ def predict_color():
     result=[]
     for i in range(len(color_index)):
         n=color_index[i]
-        print("see:",color_dict[n])
+        #print("see:",color_dict[n])
         result.append({'color':color_dict[n]})
     return jsonify(result)
 
