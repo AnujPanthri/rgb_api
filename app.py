@@ -58,10 +58,10 @@ def predict_color():
     json_str = json.dumps(lists)
     #color = color_dict[int(color_index)]
     #color=np.array(color)
-    #result=[]
-    #for i in range(len(color)):
-    #    result.append({'color':color[i,0]})
-    return jsonify(json_str)
+    result=[]
+    for i in range(len(json_str)):
+        result.append({'color':color_dict[json_str(i)]})
+    return jsonify(result)
 
 if __name__ == '__main__':
     # Threaded option to enable multiple instances for multiple user access support
