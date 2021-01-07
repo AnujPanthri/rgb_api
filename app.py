@@ -4,6 +4,7 @@
 import numpy as np
 import flask
 from flask import request, jsonify
+import json
 # Importing Tensorflow
 import tensorflow as tf
 from tensorflow import keras
@@ -52,14 +53,15 @@ def predict_color():
         arr=np.append(arr,float(temp['b']))
     input_rgb=np.reshape(arr,[len(data),3]) #reshaping as per input to ANN model
     color_class_confidence = model.predict(input_rgb) # Output of layer is in terms of Confidence of the 11 classes
-    
+    lists = color_class_confidence.tolist()
+    json_str = json.dumps(lists)
     #color_index = np.argmax(color_class_confidence, axis=1) #finding the color_class index from confidence
     #color = color_dict[int(color_index)]
     #color=np.array(color)
     #result=[]
     #for i in range(len(color)):
     #    result.append({'color':color[i,0]})
-    return jsonify(color_class_confidence)
+    return jsonify(json_str)
 
 if __name__ == '__main__':
     # Threaded option to enable multiple instances for multiple user access support
