@@ -53,9 +53,9 @@ def predict_color():
         arr=np.append(arr,float(temp['b']))
     input_rgb=np.reshape(arr,[len(data),3]) #reshaping as per input to ANN model
     color_class_confidence = model.predict(input_rgb) # Output of layer is in terms of Confidence of the 11 classes
-    lists = color_class_confidence.tolist()
+    color_index = np.argmax(color_class_confidence, axis=1) #finding the color_class index from confidence
+    lists = color_index.tolist()
     json_str = json.dumps(lists)
-    #color_index = np.argmax(color_class_confidence, axis=1) #finding the color_class index from confidence
     #color = color_dict[int(color_index)]
     #color=np.array(color)
     #result=[]
