@@ -54,12 +54,8 @@ def predict_color():
     color_class_confidence = model.predict(input_rgb) # Output of layer is in terms of Confidence of the 11 classes
     
     color_index = np.argmax(color_class_confidence, axis=1) #finding the color_class index from confidence
-    color = color_dict[int(color_index)]
-    color=np.array(color)
-    result=[]
-    for i in range(len(color)):
-        result.append({'color':color[i,0]})
-    return jsonify(result)
+    
+    return jsonify(color_index)
 
 if __name__ == '__main__':
     # Threaded option to enable multiple instances for multiple user access support
