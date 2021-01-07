@@ -44,12 +44,13 @@ def home():
 @app.route('/api/',methods=['POST'])
 def predict_color():
     data=request.get_json(force=True)
-    print(data)
-    r=float(data['r'])
-    g=float(data['g'])
-    b=float(data['b'])
-    rgb = np.asarray((r, g, b)) #rgb tuple to numpy array
-    input_rgb = np.reshape(rgb, (-1,3)) #reshaping as per input to ANN model
+    arr=[]
+    for i in range(len(data)):
+        temp=data[i]
+        arr=np.append(arr,float(temp['r']))
+        arr=np.append(arr,float(temp['g']))
+        arr=np.append(arr,float(temp['b']))
+    input_rgb=np.reshape(arr,[len(data),3]) #reshaping as per input to ANN model
     color_class_confidence = model.predict(input_rgb) # Output of layer is in terms of Confidence of the 11 classes
     color_index = np.argmax(color_class_confidence, axis=1) #finding the color_class index from confidence
     color = color_dict[int(color_index)]
