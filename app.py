@@ -40,7 +40,6 @@ def home():
 
 @app.route('/api/',methods=['POST'])
 def classifier():
-    
     return jsonify("resultfromrgb")
 
 
