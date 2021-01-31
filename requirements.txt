@@ -1,4 +1,4 @@
- base58==2.0.1
+base58==2.0.1
 blinker==1.4
 chardet==3.0.4
 click==7.1.2
