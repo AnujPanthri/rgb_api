@@ -4,7 +4,6 @@
 import numpy as np
 import flask
 from flask import request, jsonify
-import json
 # Importing Tensorflow
 import tensorflow as tf
 
