@@ -14,7 +14,7 @@ from tensorflow.keras import layers
 
 """## Loading Trained Model"""
 # Recreate the exact same model, including its weights and the optimizer
-#model = tf.keras.models.load_model('colormodel_trained.h5') 
+# model = tf.keras.models.load_model('colormodel_trained.h5') 
 
 """## Initializing Color Classes for Prediction"""
 
