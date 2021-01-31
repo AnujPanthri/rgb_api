@@ -39,9 +39,27 @@ def home():
 
 
 @app.route('/api/',methods=['POST'])
-def classifier():
-    return jsonify("resultfromrgb")
-
+def predict_color():
+    data=request.get_json(force=True)
+    arr=[]
+    for i in range(len(data)):
+        temp=data[i]
+        arr=np.append(arr,float(temp['r']))
+        arr=np.append(arr,float(temp['g']))
+        arr=np.append(arr,float(temp['b']))
+    input_rgb=np.reshape(arr,[len(data),3]) #reshaping as per input to ANN model
+    color_class_confidence = model.predict(input_rgb) # Output of layer is in terms of Confidence of the 11 classes
+    color_index = np.argmax(color_class_confidence, axis=1) #finding the color_class index from confidence
+    #lists = color_index.tolist()
+    #json_str = json.dumps(lists)#data is in this form [1,2]
+    #color = color_dict[int(color_index)]
+    #color=np.array(color)
+    result=[]
+    for i in range(len(color_index)):
+        n=color_index[i]
+        #print("see:",color_dict[n])
+        result.append({'color':color_dict[n]})
+    return jsonify(result)
 
 if __name__ == '__main__':
     # Threaded option to enable multiple instances for multiple user access support
