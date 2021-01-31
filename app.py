@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-
 ## Importing Libraries
 import numpy as np
 import flask
