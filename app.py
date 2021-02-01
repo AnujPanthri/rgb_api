@@ -59,7 +59,7 @@ def predict_color():
         n=color_index[i]
         #print("see:",color_dict[n])
         result.append({'color':color_dict[n]})
-    return jsonify(result)
+    return jsonify("result")
 
 if __name__ == '__main__':
     # Threaded option to enable multiple instances for multiple user access support
